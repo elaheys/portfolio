@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { navLinks, profile } from '@/data/content';
-import { scrollToSection } from '@/lib/scroll';
-import { CloseIcon, MenuIcon } from './ui/icons';
-import { gsap, useGSAP } from '@/lib/gsap';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useEffect, useRef, useState } from "react";
+import { navLinks, profile } from "@/data/content";
+import { scrollToSection } from "@/lib/scroll";
+import { CloseIcon, MenuIcon } from "./ui/icons";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 /**
  * Fixed top navigation. Highlights the section currently in view,
@@ -21,8 +21,8 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* Track which section is in view to highlight the matching link. */
@@ -37,7 +37,7 @@ export function Navbar() {
           if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -52,10 +52,10 @@ export function Navbar() {
         y: -80,
         opacity: 0,
         duration: 0.7,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
     },
-    { scope: navRef, dependencies: [reduced] },
+    { scope: navRef, dependencies: [reduced] }
   );
 
   const handleNav = (id: string) => {
@@ -68,14 +68,14 @@ export function Navbar() {
       ref={navRef}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? 'bg-ground/85 shadow-[0_10px_30px_-20px_rgba(33,36,61,0.4)] backdrop-blur'
-          : 'bg-transparent'
+          ? "bg-ground/85 shadow-[0_10px_30px_-20px_rgba(33,36,61,0.4)] backdrop-blur"
+          : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex h-20 max-w-shell items-center justify-between px-5 sm:px-8">
         {/* Brand */}
         <button
-          onClick={() => handleNav('home')}
+          onClick={() => handleNav("home")}
           className="flex items-center gap-2 text-lg font-bold text-ink"
         >
           <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-sm font-bold text-white">
@@ -91,7 +91,7 @@ export function Navbar() {
               <button
                 onClick={() => handleNav(link.id)}
                 className={`text-sm font-medium transition-colors hover:text-accent ${
-                  active === link.id ? 'text-accent' : 'text-ink-muted'
+                  active === link.id ? "text-accent" : "text-ink-muted"
                 }`}
               >
                 {link.label}
@@ -112,7 +112,7 @@ export function Navbar() {
         <button
           onClick={() => setMenuOpen((o) => !o)}
           className="grid h-10 w-10 place-items-center rounded-lg text-ink md:hidden"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
           {menuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -122,7 +122,7 @@ export function Navbar() {
       {/* Mobile menu */}
       <div
         className={`overflow-hidden border-t border-line bg-ground/95 backdrop-blur transition-[max-height] duration-300 md:hidden ${
-          menuOpen ? 'max-h-96' : 'max-h-0'
+          menuOpen ? "max-h-96" : "max-h-0"
         }`}
       >
         <ul className="flex flex-col gap-1 px-5 py-4">
@@ -131,7 +131,7 @@ export function Navbar() {
               <button
                 onClick={() => handleNav(link.id)}
                 className={`w-full rounded-lg px-3 py-3 text-left text-sm font-medium transition-colors hover:bg-ground-tint ${
-                  active === link.id ? 'text-accent' : 'text-ink-soft'
+                  active === link.id ? "text-accent" : "text-ink-soft"
                 }`}
               >
                 {link.label}

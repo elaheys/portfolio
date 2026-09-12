@@ -1,6 +1,6 @@
-import { profile, socials, navLinks } from '@/data/content';
-import { scrollToSection } from '@/lib/scroll';
-import { SocialIcon } from './ui/icons';
+import { profile, socials, navLinks } from "@/data/content";
+import { scrollToSection } from "@/lib/scroll";
+import { SocialIcon } from "./ui/icons";
 
 /** Simple closing footer with contact CTA, nav, and socials. */
 export function Footer() {
@@ -51,8 +51,7 @@ export function Footer() {
           </div>
 
           <p className="mt-4 text-xs text-white/40">
-            © {new Date().getFullYear()} {profile.name}. Built with React,
-            TypeScript &amp; GSAP.
+            © {new Date().getFullYear()} {profile.name}. Built with React, TypeScript &amp; GSAP.
           </p>
         </div>
       </div>

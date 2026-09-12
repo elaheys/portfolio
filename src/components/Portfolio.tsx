@@ -1,27 +1,21 @@
-import { projects } from '@/data/content';
-import { SectionHeading } from './ui/SectionHeading';
-import { Reveal } from './ui/Reveal';
-import { ArrowUpRight } from './ui/icons';
+import { projects } from "@/data/content";
+import { SectionHeading } from "./ui/SectionHeading";
+import { Reveal } from "./ui/Reveal";
+import { ArrowUpRight } from "./ui/icons";
 
 /** Portfolio grid. Each card links out to the live project or repo. */
 export function Portfolio() {
   return (
     <section id="portfolio" className="bg-ground-tint py-20 sm:py-28">
       <div className="mx-auto max-w-shell px-5 sm:px-8">
-        <SectionHeading
-          eyebrow="Visit my portfolio and keep your feedback"
-          title="My Portfolio"
-        />
+        <SectionHeading eyebrow="Visit my portfolio and keep your feedback" title="My Portfolio" />
 
-        <Reveal
-          stagger
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <Reveal stagger className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <a
               key={project.title}
               href={project.href}
-              target={project.href.startsWith('http') ? '_blank' : undefined}
+              target={project.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener noreferrer"
               className="group flex flex-col overflow-hidden rounded-xl2 bg-ground-card shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover"
             >

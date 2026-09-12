@@ -1,8 +1,8 @@
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Portfolio } from './components/Portfolio';
-import { Resume } from './components/Resume';
-import { Footer } from './components/Footer';
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { Portfolio } from "./components/Portfolio";
+import { Resume } from "./components/Resume";
+import { Footer } from "./components/Footer";
 
 /**
  * Page composition. Each section owns its own animations; to add a new
@@ -15,7 +15,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        {/* <WhatIDo /> */}
         <Portfolio />
         <Resume />
       </main>

@@ -1,12 +1,12 @@
-import { useRef, type SyntheticEvent } from 'react';
-import { profile, socials } from '@/data/content';
-import { scrollToSection } from '@/lib/scroll';
-import { gsap, useGSAP } from '@/lib/gsap';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { ArrowUpRight, DownloadIcon, SocialIcon } from './ui/icons';
+import { useRef, type SyntheticEvent } from "react";
+import { profile, socials } from "@/data/content";
+import { scrollToSection } from "@/lib/scroll";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { ArrowUpRight, DownloadIcon, SocialIcon } from "./ui/icons";
 
 /** Organic "blob" shape used behind the hero portrait. */
-const BLOB_RADIUS = '42% 58% 60% 40% / 45% 45% 55% 55%';
+const BLOB_RADIUS = "42% 58% 60% 40% / 45% 45% 55% 55%";
 
 /**
  * Landing hero: intro text on the left, portrait on the right.
@@ -15,17 +15,17 @@ const BLOB_RADIUS = '42% 58% 60% 40% / 45% 45% 55% 55%';
 export function Hero() {
   const root = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const resumeHref = `${import.meta.env.BASE_URL}${profile.resumeUrl.replace(/^\//, '')}`;
+  const resumeHref = `${import.meta.env.BASE_URL}${profile.resumeUrl.replace(/^\//, "")}`;
 
   useGSAP(
     () => {
       if (reduced || !root.current) return;
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.8 } });
       tl.from('[data-hero="text"] > *', { y: 30, opacity: 0, stagger: 0.12 })
-        .from('[data-hero="portrait"]', { scale: 0.92, opacity: 0, duration: 1 }, '-=0.6')
-        .from('[data-hero="badge"]', { y: 20, opacity: 0, stagger: 0.15 }, '-=0.5');
+        .from('[data-hero="portrait"]', { scale: 0.92, opacity: 0, duration: 1 }, "-=0.6")
+        .from('[data-hero="badge"]', { y: 20, opacity: 0, stagger: 0.15 }, "-=0.5");
     },
-    { scope: root, dependencies: [reduced] },
+    { scope: root, dependencies: [reduced] }
   );
 
   return (
@@ -43,18 +43,15 @@ export function Hero() {
             {profile.eyebrow}
           </p>
           <h1 className="text-4xl font-extrabold leading-tight text-ink sm:text-5xl lg:text-6xl">
-            {profile.greeting}{' '}
-            <span className="text-accent">{profile.name}</span>,
+            {profile.greeting} <span className="text-accent">{profile.name}</span>,
             <br className="hidden sm:block" /> {profile.role}
           </h1>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
-            {profile.intro}
-          </p>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">{profile.intro}</p>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <button
-              onClick={() => scrollToSection('portfolio')}
+              onClick={() => scrollToSection("portfolio")}
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
             >
               View my work
@@ -100,17 +97,14 @@ export function Hero() {
               className="absolute inset-0 -z-10 translate-y-4 scale-105 bg-accent"
               style={{ borderRadius: BLOB_RADIUS }}
             />
-            <div
-              className="overflow-hidden bg-ground-tint"
-              style={{ borderRadius: BLOB_RADIUS }}
-            >
+            <div className="overflow-hidden bg-ground-tint" style={{ borderRadius: BLOB_RADIUS }}>
               <img
                 src={profile.portrait}
                 alt={`${profile.name}, ${profile.role}`}
                 className="h-full w-full object-cover"
                 onError={(e: SyntheticEvent<HTMLImageElement>) => {
                   // graceful fallback if no portrait added yet
-                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.style.display = "none";
                 }}
               />
             </div>
@@ -124,9 +118,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
               </span>
-              <span className="text-xs font-semibold text-ink-soft">
-                {profile.availability}
-              </span>
+              <span className="text-xs font-semibold text-ink-soft">{profile.availability}</span>
             </div>
 
             {/* location badge */}
@@ -137,9 +129,7 @@ export function Hero() {
               <p className="text-[10px] font-medium uppercase tracking-widest text-ink-faint">
                 Based in
               </p>
-              <p className="text-sm font-semibold text-ink-soft">
-                {profile.location}
-              </p>
+              <p className="text-sm font-semibold text-ink-soft">{profile.location}</p>
             </div>
           </div>
         </div>

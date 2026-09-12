@@ -5,11 +5,28 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.prettierignore
 
 node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Local portfolio content
+src/data/
+
+# Coverage and caches
+coverage
+.nyc_output
+.eslintcache
+.vite
+.turbo
 
 # Editor
 .vscode/*

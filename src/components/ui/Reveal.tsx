@@ -1,6 +1,6 @@
-import { useRef, type ElementType, type ReactNode } from 'react';
-import { gsap, useGSAP, EASE } from '@/lib/gsap';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useRef, type ElementType, type ReactNode } from "react";
+import { gsap, useGSAP, EASE } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface RevealProps {
   children: ReactNode;
@@ -23,15 +23,8 @@ interface RevealProps {
  *   <Reveal><h2>Title</h2></Reveal>
  *   <Reveal stagger className="grid">{cards}</Reveal>
  */
-export function Reveal({
-  children,
-  as,
-  className,
-  stagger = false,
-  delay = 0,
-  y = 40,
-}: RevealProps) {
-  const Tag = (as ?? 'div') as ElementType;
+export function Reveal({ children, as, className, stagger = false, y = 40 }: RevealProps) {
+  const Tag = (as ?? "div") as ElementType;
   const scope = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
 
@@ -44,23 +37,23 @@ export function Reveal({
         : [scope.current];
 
       gsap.fromTo(
-  targets,
-  { opacity: 0, y },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: EASE,
-    stagger: stagger ? 0.12 : 0,
-    scrollTrigger: {
-      trigger: scope.current,
-      start: 'top bottom',
-      once: true,
+        targets,
+        { opacity: 0, y },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: EASE,
+          stagger: stagger ? 0.12 : 0,
+          scrollTrigger: {
+            trigger: scope.current,
+            start: "top bottom",
+            once: true,
+          },
+        }
+      );
     },
-  },
-);
-    },
-    { scope, dependencies: [reduced] },
+    { scope, dependencies: [reduced] }
   );
 
   return (

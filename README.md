@@ -25,15 +25,15 @@ src/data/content.ts
 Open it and edit the objects. It's fully typed, so your editor will tell you if
 a field is missing.
 
-| Want to change…            | Edit this in `content.ts`         |
-| -------------------------- | --------------------------------- |
-| Name, role, intro, email   | `profile`                         |
-| Social links               | `socials`                         |
-| "What I Do" cards          | `services`                        |
-| Portfolio projects         | `projects` (copy a block to add)  |
-| Education / Experience     | `education` / `experience`        |
-| Skill bars                 | `skills`                          |
-| Nav menu items             | `navLinks`                        |
+| Want to change…          | Edit this in `content.ts`        |
+| ------------------------ | -------------------------------- |
+| Name, role, intro, email | `profile`                        |
+| Social links             | `socials`                        |
+| "What I Do" cards        | `services`                       |
+| Portfolio projects       | `projects` (copy a block to add) |
+| Education / Experience   | `education` / `experience`       |
+| Skill bars               | `skills`                         |
+| Nav menu items           | `navLinks`                       |
 
 Search the file for `TODO:` to find every placeholder that still needs your
 real details.

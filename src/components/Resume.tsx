@@ -1,16 +1,16 @@
-import { useRef, useState } from 'react';
-import { education, experience, skills, type TimelineItem } from '@/data/content';
-import { SectionHeading } from './ui/SectionHeading';
-import { Reveal } from './ui/Reveal';
-import { gsap, useGSAP } from '@/lib/gsap';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { useRef, useState } from "react";
+import { education, experience, skills, type TimelineItem } from "@/data/content";
+import { SectionHeading } from "./ui/SectionHeading";
+import { Reveal } from "./ui/Reveal";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-type TabKey = 'education' | 'experience' | 'skills';
+type TabKey = "education" | "experience" | "skills";
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: 'education', label: 'Education' },
-  { key: 'experience', label: 'Experience' },
-  { key: 'skills', label: 'Skills' },
+  { key: "education", label: "Education" },
+  { key: "experience", label: "Experience" },
+  { key: "skills", label: "Skills" },
 ];
 
 /**
@@ -18,7 +18,7 @@ const TABS: { key: TabKey; label: string }[] = [
  * panel animates its progress bars from 0 whenever it becomes visible.
  */
 export function Resume() {
-  const [tab, setTab] = useState<TabKey>('education');
+  const [tab, setTab] = useState<TabKey>("education");
   const panelRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
@@ -32,29 +32,29 @@ export function Resume() {
           opacity: 0,
           y: 24,
           duration: 0.5,
-          ease: 'power2.out',
+          ease: "power2.out",
           stagger: 0.08,
         });
       }
 
-      if (tab === 'skills') {
-        const bars = panelRef.current.querySelectorAll<HTMLElement>('[data-bar]');
+      if (tab === "skills") {
+        const bars = panelRef.current.querySelectorAll<HTMLElement>("[data-bar]");
         bars.forEach((bar) => {
-          const target = bar.dataset.bar ?? '0';
+          const target = bar.dataset.bar ?? "0";
           gsap.fromTo(
             bar,
-            { width: '0%' },
+            { width: "0%" },
             {
               width: `${target}%`,
               duration: reduced ? 0 : 1,
-              ease: 'power2.out',
+              ease: "power2.out",
               delay: reduced ? 0 : 0.15,
-            },
+            }
           );
         });
       }
     },
-    { scope: panelRef, dependencies: [tab, reduced] },
+    { scope: panelRef, dependencies: [tab, reduced] }
   );
 
   return (
@@ -69,9 +69,7 @@ export function Resume() {
               key={t.key}
               onClick={() => setTab(t.key)}
               className={`flex-1 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
-                tab === t.key
-                  ? 'bg-accent text-white'
-                  : 'text-ink-muted hover:text-ink'
+                tab === t.key ? "bg-accent text-white" : "text-ink-muted hover:text-ink"
               }`}
               aria-pressed={tab === t.key}
             >
@@ -82,9 +80,9 @@ export function Resume() {
 
         {/* Panels */}
         <div ref={panelRef}>
-          {tab === 'education' && <Timeline items={education} />}
-          {tab === 'experience' && <Timeline items={experience} />}
-          {tab === 'skills' && <Skills />}
+          {tab === "education" && <Timeline items={education} />}
+          {tab === "experience" && <Timeline items={experience} />}
+          {tab === "skills" && <Skills />}
         </div>
       </div>
     </section>
@@ -113,9 +111,7 @@ function Timeline({ items }: { items: TimelineItem[] }) {
           </div>
           <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
           <p className="mb-3 text-sm font-medium text-ink-muted">{item.place}</p>
-          <p className="text-sm leading-relaxed text-ink-muted">
-            {item.description}
-          </p>
+          <p className="text-sm leading-relaxed text-ink-muted">{item.description}</p>
         </article>
       ))}
     </div>
@@ -130,12 +126,8 @@ function Skills() {
       {skills.map((skill) => (
         <div key={skill.name}>
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm font-semibold text-ink-soft">
-              {skill.name}
-            </span>
-            <span className="text-sm font-semibold text-accent">
-              {skill.level}%
-            </span>
+            <span className="text-sm font-semibold text-ink-soft">{skill.name}</span>
+            <span className="text-sm font-semibold text-accent">{skill.level}%</span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-line">
             <div
