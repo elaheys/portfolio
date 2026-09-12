@@ -18,9 +18,6 @@ dist-ssr
 .env.*
 !.env.example
 
-# Local portfolio content
-src/data/
-
 # Coverage and caches
 coverage
 .nyc_output
