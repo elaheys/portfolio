@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ground text-ink;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nicer default focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  /* Hide the FOUC flash before GSAP mounts by keeping content visible;
+     GSAP's gsap.from() sets the start state itself once hydrated. */
+  .will-animate {
+    will-change: transform, opacity;
+  }
+}
