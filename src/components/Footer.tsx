@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           <p className="mt-4 text-xs text-white/40">
-            © {new Date().getFullYear()} {profile.name}. Built with React, TypeScript &amp; GSAP.
+            © {new Date().getFullYear()} {profile.name}. Built with React, TypeScript &amp; ❤️.
           </p>
         </div>
       </div>
