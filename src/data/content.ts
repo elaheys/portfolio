@@ -78,7 +78,7 @@ export const socials: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/elaheys", icon: "github" }, // TODO
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/elahe-yousefi-9851a31a3/",
+    href: "https://www.linkedin.com/in/elahe-ysf/",
     icon: "linkedin",
   }, // TODO
 ];

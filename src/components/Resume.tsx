@@ -60,7 +60,7 @@ export function Resume() {
   return (
     <section id="resume" className="py-20 sm:py-28">
       <div className="mx-auto max-w-shell px-5 sm:px-8">
-        <SectionHeading eyebrow="+2 Years of Experience" title="My Resume" />
+        <SectionHeading eyebrow="+3 Years of Experience" title="My Resume" />
 
         {/* Tab switcher */}
         <Reveal className="mx-auto mb-10 flex max-w-md items-center gap-1 rounded-full border border-line bg-ground-card p-1.5 shadow-card">
